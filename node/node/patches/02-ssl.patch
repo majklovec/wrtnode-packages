@@ -1,0 +1,29 @@
+diff -ru node-v0.10.33/src/node.cc.old node-v0.10.33/src/node.cc
+--- node-v0.10.33/src/node.cc.old       2014-10-23 19:45:12.000000000 +0200
++++ node-v0.10.33/src/node.cc           2014-11-24 06:12:26.935478502 +0100
+@@ -2544,8 +2544,10 @@
+          "  --trace-deprecation  show stack traces on deprecations\n"
+          "  --v8-options         print v8 command line options\n"
+          "  --max-stack-size=val set max v8 stack size (bytes)\n"
++#if HAVE_OPENSSL
+          "  --enable-ssl2        enable ssl2\n"
+          "  --enable-ssl3        enable ssl3\n"
++#endif
+          "\n"
+          "Environment variables:\n"
+ #ifdef _WIN32
+@@ -2579,12 +2581,14 @@
+       p = 1 + strchr(arg, '=');
+       max_stack_size = atoi(p);
+       argv[i] = const_cast<char*>("");
++#if HAVE_OPENSSL
+     } else if (strcmp(arg, "--enable-ssl2") == 0) {
+       SSL2_ENABLE = true;
+       argv[i] = const_cast<char*>("");
+     } else if (strcmp(arg, "--enable-ssl3") == 0) {
+       SSL3_ENABLE = true;
+       argv[i] = const_cast<char*>("");
++#endif
+     } else if (strcmp(arg, "--help") == 0 || strcmp(arg, "-h") == 0) {
+       PrintHelp();
+       exit(0);
