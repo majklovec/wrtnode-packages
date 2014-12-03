@@ -6,7 +6,7 @@ PKG_RELEASE:=3
 
 PKG_SOURCE:=node-v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://nodejs.org/dist/v${PKG_VERSION}
-PKG_MD5SUM:=cf22f6f5a4f0b987c7ab6ef0f4267859
+PKG_MD5SUM:=626ca8a4f8fec4df49c78ed53d46f1f7
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-v$(PKG_VERSION)
 GYP_DEFINES:=v8_use_mips_abi_hardfloat=false v8_can_use_fpu_instructions=false
 LIBS:=-I$(TOOLCHAIN_DIR)/mipsel-openwrt-linux-uclibc/include/c++/4.8.3/ -I$(TOOLCHAIN_DIR)/mipsel-openwrt-linux-uclibc/include/c++/4.8.3/mipsel-openwrt-linux-uclibc/
